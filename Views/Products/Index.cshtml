@@ -1,0 +1,61 @@
+﻿
+@model IEnumerable<TestA.Models.ProductModel>
+
+@{
+  ViewData["Title"] = "Products";
+}
+<section class="content">
+
+  <div class="container-fluid">
+
+    <div class="card"> 
+
+      <dvi class="card-header" > 
+         <h3 class="card-title" > Prodcts List </h3> 
+         <div class="card-tools"> 
+          <a href="~/Products/Add" class="btn btn-primary btn-sm"> 
+            <i class="fas fa-plus" ></i> 
+           Add Product   
+           </a> 
+         </div> 
+       </dvi>
+
+      <div class="card-body" >
+        <table class="table table-bordered">
+          <thead>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Price</th>
+            <th>Cerated Date</th>
+          </thead>
+          <tbody>
+            @foreach (var item in Model)
+            {
+              <tr>
+                <td>@Html.DisplayFor(modelItem => item.Name)</td>
+                <td>@Html.DisplayFor(modelItem => item.Description)</td>
+                <td>@Html.DisplayFor(modelItem => item.Price)</td>
+                <td>@Html.DisplayFor(modelItem => item.CreatedDate)</td>
+                <td>
+                                    <a herf="~/Products/Edit" asp-action="Edit"
+                                       asp-route-id="@item.Id"
+                                       @* asp-route-currentPage="@Model.CurrentPage" *@
+                                       class="btn btn-sm btn-primary">Edit<i class="fas fa-edit"></i></a>
+
+                                    <a herf="~/Products/Delete" her asp-action="DeleteConfirm"
+                                       asp-route-id="@item.Id"
+                                    @* asp-route-currentPage="@Model.CurrentPage" *@
+                                       class="btn btn-sm btn-primary">Delete<i class="fas fa-edit"></i></a>
+                </td>
+              </tr>
+            }
+          </tbody>
+
+        </table>
+      </div>
+
+    </div>
+    
+  </div>
+  
+</section>

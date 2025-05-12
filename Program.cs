@@ -1,7 +1,13 @@
+using TestA.Data;
+using TestA.Repositories;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+builder.Services.AddSingleton<DapperContext>();
+builder.Services.AddScoped<ProductReponsitory>();
 
 var app = builder.Build();
 
